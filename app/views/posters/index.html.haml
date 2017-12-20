@@ -1,0 +1,21 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 All Movies
+
+%table#posters
+  %thead
+    %tr
+      %th Poster Content
+      %th label
+      %th Release Date
+      %th Posted By
+      %th More Info
+  %tbody
+    - @posters.each do |poster|
+      %tr
+        %td= poster.content 
+        %td= poster.label
+        %td= poster.release_date
+        %td= poster.user_id
+        %td= link_to "More about #{poster.label}", poster_path(poster)
+
+= link_to 'Post a poster', new_poster_path
