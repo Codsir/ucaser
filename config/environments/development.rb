@@ -1,4 +1,7 @@
 Rails.application.configure do
+  #汪鹏加的，添加ip
+  config.web_console.whitelisted_ips << '23.106.0.0/16'
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
