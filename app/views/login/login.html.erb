@@ -1,14 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
-        <title>Animated Form Switching with jQuery</title>
+        <title>登陆</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
         <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
 		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
         <%= stylesheet_link_tag "style.css" %>
-		<%= javascript_include_tag "cufon-yui.js" %>
-		<%= javascript_include_tag "ChunkFive_400.font.js" %>
 		
 		<script type="text/javascript">
 			Cufon.replace('h1',{ textShadow: '1px 1px #fff'});
@@ -19,32 +17,34 @@
     </head>
     <body>
 		<div class="wrapper">
-			<h1>Animated Form Switching</h1>
-			<h2>Demo: click the <span>orange links</span> to see the form animating and switching</h2>
+			<h1>UCASER论坛登陆</h1>
+			<h2 style="color:gray">欢迎访问国科大UCASER论坛，请您先登陆</h2>
 			<div class="content">
 				<div id="form_wrapper" class="form_wrapper">
+					
+					<!--这是注册Form的代码-->
 					<form class="register">
-						<h3>Register</h3>
+						<h3>注册</h3>
 						<div class="column">
 							<div>
-								<label>First Name:</label>
+								<label>姓：</label>
 								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Last Name:</label>
+								<label>名：</label>
 								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Website:</label>
-								<input type="text" value="http://"/>
+								<label>学号：</label>
+								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
 						</div>
 						<div class="column">
 							<div>
-								<label>Username:</label>
+								<label>用户名：</label>
 								<input type="text"/>
 								<span class="error">This is an error</span>
 							</div>
@@ -54,63 +54,66 @@
 								<span class="error">This is an error</span>
 							</div>
 							<div>
-								<label>Password:</label>
+								<label>密码：</label>
 								<input type="password" />
 								<span class="error">This is an error</span>
 							</div>
 						</div>
+						<!--这一部分是注册按钮的代码段-->
 						<div class="bottom">
-							<div class="remember">
-								<input type="checkbox" />
-								<span>Send me updates</span>
-							</div>
-							<input type="submit" value="Register" />
-							<a href="login.html" rel="login" class="linkform">You have an account already? Log in here</a>
+							<input type="submit" value="注册" />
+							<a href="login.html" rel="login" class="linkform">已有账号？点我登陆吧！</a>
 							<div class="clear"></div>
 						</div>
 					</form>
+					
+					<!--这是登陆Form的代码-->
 					<form class="login active">
-						<h3>Login</h3>
+						<h3>登陆</h3>
 						<div>
-							<label>Username:</label>
+							<label>用户名：</label>
 							<input type="text" />
 							<span class="error">This is an error</span>
 						</div>
 						<div>
-							<label>Password: <a href="forgot_password.html" rel="forgot_password" class="forgot linkform">Forgot your password?</a></label>
+							<label>密码：<a href="forgot_password.html" rel="forgot_password" class="forgot linkform">忘记密码了？</a></label>
 							<input type="password" />
 							<span class="error">This is an error</span>
 						</div>
+						<!--这一部分是提交按钮的代码段-->
 						<div class="bottom">
-							<div class="remember"><input type="checkbox" /><span>Keep me logged in</span></div>
-							<input type="submit" value="Login"></input>
-							<a href="register.html" rel="register" class="linkform">You don't have an account yet? Register here</a>
+							<div class="remember"><input type="checkbox" /><span>记住登陆状态</span></div>
+							<input type="submit" value="登陆"></input>
+							<a href="register.html" rel="register" class="linkform">还没有账号？点我注册吧！</a>
 							<div class="clear"></div>
 						</div>
 					</form>
+					
+					<!--这是忘记密码Form的代码-->
 					<form class="forgot_password">
-						<h3>Forgot Password</h3>
+						<h3>忘记密码？</h3>
 						<div>
-							<label>Username or Email:</label>
+							<label>用户名或邮箱：</label>
 							<input type="text" />
 							<span class="error">This is an error</span>
 						</div>
+						<!--这一部分是发送忘记密码邮件按钮的代码段-->
 						<div class="bottom">
-							<input type="submit" value="Send reminder"></input>
-							<a href="login.html" rel="login" class="linkform">Suddenly remebered? Log in here</a>
-							<a href="register.html" rel="register" class="linkform">You don't have an account? Register here</a>
+							<input type="submit" value="发送邮件"></input>
+							<a href="login.html" rel="login" class="linkform">脑回路通了？点我登陆吧！</a>
+							<a href="register.html" rel="register" class="linkform">还没有账号？点我注册吧！</a>
 							<div class="clear"></div>
 						</div>
 					</form>
 				</div>
 				<div class="clear"></div>
 			</div>
-			<a class="back" href="http://tympanus.net/codrops/2011/01/06/animated-form-switching/">back to the Codrops tutorial</a>
+			<a class="back" href="#" onClick="javascript :history.back(-1);">返回论坛主页</a>
 		</div>
 		
 
 		<!-- The JavaScript -->
-		<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 					//the form wrapper (includes all forms)

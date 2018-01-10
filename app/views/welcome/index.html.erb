@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <h1>中国科学院大学论坛UCASER!</h1>
+    <title>欢迎访问UCASER论坛！</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <%= stylesheet_link_tag "style.css" %>
+	
+	<script type="text/javascript">
+		Cufon.replace('h1',{ textShadow: '1px 1px #fff'});
+		Cufon.replace('h2',{ textShadow: '1px 1px #fff'});
+		Cufon.replace('h3',{ textShadow: '1px 1px #000'});
+		Cufon.replace('.back');
+	</script>
+	
+	<style>
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 32px 64px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .button {
+        background-color: white;
+        color: black;
+        border: 2px solid #e7e7e7;
+    }
+
+    .button:hover {background-color: #e7e7e7;}
+    
+    .wrapper{
+    	width:960px;
+    	margin:20px auto;
+    }
+    </style>
 </head>
 <body>
-    <h2>
-      <p>本论坛主要只限于讨论研究和学习问题、组织健康的体育和娱乐活动、分享资料等，请勿发布广告和非法言论!</p>
-    </h2>
-    <%= link_to '发帖内容', controller: 'articles' %>
-    <a href="../login/login.html" >登陆</a>
+    <div class="wrapper">
+    	<h1>中国科学院大学论坛UCASER!</h1>
+    	<h2 style="color:gray">本论坛主要只限于讨论研究和学习问题、组织健康的体育和娱乐活动、分享资料等，请勿发布广告和非法言论!</h2>
+        <%= link_to '<button class="button">发帖</button>'.html_safe, controller: 'articles' %>
+    	<button class="button" onclick="window.location.href('../login/login.html')">登陆</button>
+    </div>
 </body>
 </html>
