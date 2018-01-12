@@ -11,5 +11,9 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 Rails.application.config.assets.precompile += %w( style.css )
-Rails.application.config.assets.precompile += %w( cufon-yui.js )
-Rails.application.config.assets.precompile += %w( ChunkFive_400.font.js )
+Rails.application.config.assets.precompile += %w( editormd.css )
+Rails.application.config.assets.precompile += %w( editormd.min.css )
+Rails.application.config.assets.precompile += %w( editormd.js )
+Rails.application.config.assets.precompile += %w( editormd.min.js )
+Rails.application.config.assets.precompile += %w( jquery.min.js )
+Rails.application.config.assets.precompile += %w( zepto.min.js )
