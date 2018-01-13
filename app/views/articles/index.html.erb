@@ -1,25 +1,41 @@
-
-    
-<h1>UCASER</h1>
-<%= link_to '来发帖吧', new_article_path %> 
-<table>
-  <tr>
-    <th>标题</th>
-    <th>标签</th>
-    <th colspan="5"></th>
-  </tr>
- 
-  <% @articles.each do |article| %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>看帖</title>
+  <meta charset="UTF-8"/>
+  <%= stylesheet_link_tag "style.css" %>
+  <%= javascript_include_tag "application" %>
+  
+  <style>
+      
+  </style>
+</head>
+<body>
+  <div id="layout">
+    <header>
+      <h1>所有帖子</h1>
+    </header>
+  </div>
+  <%= link_to '来发帖吧', new_article_path %> 
+  <table>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.label %></td>
-      <!-- <td><%= article.text %></td> -->
-      <td><%= link_to '查看内容', article_path(article) %></td>
-      <td><%= link_to '编辑内容', edit_article_path(article) %></td>
-      <td><%= link_to '删除帖子', article_path(article),
-              method: :delete,
-              data: { confirm: '确定要删除?' } %></td>
+      <th>标题</th>
+      <th>标签</th>
+      <th colspan="5"></th>
     </tr>
-  <% end %>
-</table>
-
+   
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.label %></td>
+        <!-- <td><%= article.text %></td> -->
+        <td><%= link_to '查看内容', article_path(article) %></td>
+        <td><%= link_to '编辑内容', edit_article_path(article) %></td>
+        <td><%= link_to '删除帖子', article_path(article),
+                method: :delete,
+                data: { confirm: '确定要删除?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</body>
+</html>
