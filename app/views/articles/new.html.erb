@@ -45,7 +45,6 @@
                 <%= f.label :帖子内容 %><br>
             </p>
             
-            <% end %>
         </header>
         <div class="btns">
             <button id="show-btn">Show editor</button>
@@ -64,16 +63,14 @@
     
     <form action="http://editormd.ipandao.com/php/post.php" method="post">
         <div class="editormd" id="test-editormd">                
-            <textarea style="display:none;"  name="article[text]">### Hello world!</textarea>
+            <textarea style="display:none;"  name="article[text]"></textarea>
         </div>
         <br/><input type="submit" name="commit" value="提交" class="btn" style="margin-left: 5%;" />
     </form>
     <br><br><br><br>
 
     <%= javascript_include_tag "jquery.min.js" %>
-    <%= javascript_include_tag "editormd.min.js" %>
-
-
+    <%= javascript_include_tag "editormd.js" %>
     <script type="text/javascript">
         var testEditor;
         
@@ -170,6 +167,7 @@
         });
     </script>
     
+    <% end %>
     
     <%= link_to '返回帖子列表',  articles_path ,class:'back'%>
     

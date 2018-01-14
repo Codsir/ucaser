@@ -4,7 +4,10 @@
   <title>看帖</title>
   <meta charset="UTF-8"/>
   <%= stylesheet_link_tag "style.css" %>
+  <%= stylesheet_link_tag "bootstrap.css" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery.min.js" %>
+  <%= javascript_include_tag "bootstrap.js" %>
   
   <style>
       
@@ -16,26 +19,39 @@
       <h1>所有帖子</h1>
     </header>
   </div>
-  <%= link_to '来发帖吧', new_article_path %> 
-  <table>
-    <tr>
-      <th>标题</th>
-      <th>标签</th>
-      <th colspan="5"></th>
-    </tr>
-   
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.label %></td>
-        <!-- <td><%= article.text %></td> -->
-        <td><%= link_to '查看内容', article_path(article) %></td>
-        <td><%= link_to '编辑内容', edit_article_path(article) %></td>
-        <td><%= link_to '删除帖子', article_path(article),
-                method: :delete,
-                data: { confirm: '确定要删除?' } %></td>
-      </tr>
-    <% end %>
-  </table>
+  
+  <div class="container theme-showcase">
+    <%= link_to '来发帖吧', new_article_path %><br>
+    <div class="col-md-12", align="center">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>标题</th>
+            <th>标签</th>
+            <th>作者</th>
+            <th>最近回复</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @articles.each do |article| %>
+            <tr>
+              <td><%= link_to article.title, article_path(article) %></td>
+              <td><%= link_to article.label, article.label %></td>
+              <td><%= link_to '作者', article.label%></td>
+              <td><%= '回复者'%></td>
+              
+              <!--希望能在model里加入帖子作者，最近回复人和回复时间等字段-->
+              
+              <!--可以考虑在这里加一个标签的链接-->
+              <!--编辑和查看可以再都在查看页面实现-->
+              <!--删除只对一定级别的管理员开放-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <%= link_to '返回主页',  href="/" ,class:'back'%>
 </body>
 </html>

@@ -104,7 +104,7 @@
         delay                : 300,            // Delay parse markdown to html, Uint : ms
         autoLoadModules      : true,           // Automatic load dependent module files
         watch                : true,
-        placeholder          : "Enjoy Markdown! coding now...",
+        placeholder          : "这是一个MarkDown编辑器，在这里写下你想发表的内容吧！",
         gotoLine             : true,
         codeFold             : false,
         autoHeight           : false,

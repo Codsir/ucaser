@@ -3,7 +3,7 @@
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= @article.errors.count%>错误导致帖子无法保存:
+        <%= @article.errors.count%>个错误导致帖子无法保存:
       </h2>
       <ul>
         <% @article.errors.full_messages.each do |msg| %>

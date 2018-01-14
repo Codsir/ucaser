@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
         <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
-		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>
+		<!--<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/>-->
         <%= stylesheet_link_tag "style.css" %>
 		
     </head>
@@ -107,7 +107,7 @@
 		
 
 		<!-- The JavaScript -->
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<%= javascript_include_tag "register_jquery.min.js" %>
 		<script type="text/javascript">
 			$(function() {
 					//the form wrapper (includes all forms)
