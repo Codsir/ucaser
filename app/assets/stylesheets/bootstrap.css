@@ -11,6 +11,8 @@ html {
 }
 body {
   margin: 0;
+	background-image: url(bg.gif);
+  background-repeat: repeat;
 }
 article,
 aside,
