@@ -75,8 +75,6 @@ body {
 }
 
 #layout > header > h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
 }
 
 .btns button, .btn {
@@ -95,17 +93,6 @@ body {
 }
 
 
-h1{
-	font-size:56px;
-}
-h2{
-	font-size:20px;
-	padding:0px 0px 40px 0px;
-	color:#aaa;
-}
-h2 span{
-	color:#ffa800;
-}
 a{
 	color:#777;
 }
@@ -153,8 +140,8 @@ a.back{
 }
 .form_wrapper h3{
 	padding:20px 30px 20px 30px;
-	background-color:#444;
-	color:#fff;
+	background-color:#e7e7e7;
+	color:#777;
 	font-size:25px;
 	border-bottom:1px solid #ddd;
 }
@@ -187,6 +174,7 @@ form.forgot_password{
 	color:#000;
 }
 .form_wrapper label{
+	color:#777;
 	display:block;
 	padding:10px 30px 0px 30px;
 	margin:10px 0px 0px 0px;
@@ -225,12 +213,11 @@ form.forgot_password{
 	background:#feffef;
 }
 .form_wrapper .bottom{
-	background-color:#444;
+	background-color:#e7e7e7;
 	border-top:1px solid #ddd;
 	margin-top:20px;
 	clear:both;
-	color:#fff;
-	text-shadow:1px 1px 1px #000;
+	color:#777;
 }
 .form_wrapper .bottom a{
 	display:block;
@@ -238,14 +225,12 @@ form.forgot_password{
 	padding:10px 30px;
 	text-align:right;
 	color:#ffa800;
-	text-shadow:1px 1px 1px #000;
 }
 .form_wrapper a.forgot{
 	float:right;
 	font-style:italic;
 	line-height:24px;
 	color:#ffa800;
-	text-shadow:1px 1px 1px #fff;
 }
 .form_wrapper a.forgot:hover{
 	color:#000;
@@ -281,7 +266,6 @@ form.forgot_password{
 	cursor:pointer;
 	float:right;
 	margin:15px 20px 10px 10px;
-	text-shadow: 0px 1px 0px #fff;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
@@ -295,15 +279,4 @@ form.forgot_password{
 	-webkit-box-shadow: 0px 0px 2px #eaeaea inset;
 	box-shadow: 0px 0px 2px #eaeaea inset;
 	color: #222;
-}
-
-.ipt {
-    padding: 8px 10px;
-    width: 80%;
-    background: #fff;
-    border: 1px solid #ddd;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-transition: background 300ms ease-out;
-    transition: background 300ms ease-out;
 }

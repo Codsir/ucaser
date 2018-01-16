@@ -9,14 +9,10 @@
     <%= javascript_include_tag "jquery.min.js" %>
     <%= javascript_include_tag "bootstrap.js" %>
     <%= javascript_include_tag "application" %>
-    
-    <style>
-        
-    </style>
 </head>
-<body>
+<body style="padding-top:40px">
     
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -36,15 +32,16 @@
             <!--这里是搜索页面的链接-->
             <li><a href="">搜索</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login/login.html">登陆</a></li>
+          </ul>
         </div>
       </div>
     </nav>
     
-    <div class="container theme-showcase" role="main">
-        <div class="page-header">
             <div id="layout">
                 <header>
-                    <h1>新建发帖</h1>
+                    <h1>新建帖子</h1>
                     <%= form_for @article do |f| %>
          
                     <% if @article.errors.any? %>
@@ -60,33 +57,15 @@
                     </div>
                     <% end %>
                     
-                    <p>
-                        <%= f.label :帖子标题 %><br><br>
-                        <%= f.text_field :title , class:'ipt' %>
-                    </p>
-                    
-                    <p>
-                        <%= f.label :帖子标签 %><br><br>
-                        <%= f.text_field :label , class:'ipt' %>
-                    </p>
-                    
-                    <p>
-                        <%= f.label :帖子内容 %><br>
-                    </p>
+                    <%= f.label :帖子标题,style:"font-size:20px;margin-bottom:10px;margin-top:10px"%>
+                    <%= f.text_field :title , type:"text",class:"form-control",placeholder:"帖子标题" %>
+                
+                    <%= f.label :帖子标签,style:"font-size:20px;margin-bottom:10px;margin-top:10px" %>
+                    <%= f.text_field :label , type:"text",class:"form-control",placeholder:"帖子标签" %>
+               
+                    <%= f.label :帖子内容,style:"font-size:20px;margin-bottom:10px;margin-top:10px" %>
                     
                 </header>
-                <div class="btns">
-                    <button id="show-btn">Show editor</button>
-                    <button id="hide-btn">Hide editor</button>
-                    <button id="watch-btn">Watch</button>
-                    <button id="unwatch-btn">Unwatch</button>
-                    <button id="preview-btn">Preview HTML (Press Shift + ESC cancel)</button>
-                    <button id="fullscreen-btn">Fullscreen (Press ESC cancel)</button>
-                    <button id="show-toolbar-btn">Show toolbar</button>
-                    <button id="close-toolbar-btn">Hide toolbar</button>
-                    <button id="toc-menu-btn">ToC Dropdown menu</button>
-                    <button id="toc-default-btn">ToC default</button>
-                </div>
                 
             </div>
             
@@ -94,7 +73,7 @@
                 <div class="editormd" id="test-editormd">                
                     <textarea style="display:none;"  name="article[text]"></textarea>
                 </div>
-                <br/><input type="submit" name="commit" value="提交" class="btn" style="margin-left: 5%;" />
+                <br/><input type="submit" name="commit" value="发布" class="btn" style="margin-left: 5%;" />
             </form>
             <br><br><br><br>
         
@@ -147,60 +126,58 @@
                         }
                     });
                     
-                    $("#goto-line-btn").bind("click", function(){
-                        testEditor.gotoLine(90);
-                    });
+                    // $("#goto-line-btn").bind("click", function(){
+                    //     testEditor.gotoLine(90);
+                    // });
                     
-                    $("#show-btn").bind('click', function(){
-                        testEditor.show();
-                    });
+                    // $("#show-btn").bind('click', function(){
+                    //     testEditor.show();
+                    // });
                     
-                    $("#hide-btn").bind('click', function(){
-                        testEditor.hide();
-                    });
+                    // $("#hide-btn").bind('click', function(){
+                    //     testEditor.hide();
+                    // });
                     
-                    $("#watch-btn").bind('click', function() {
-                        testEditor.watch();
-                    });                 
+                    // $("#watch-btn").bind('click', function() {
+                    //     testEditor.watch();
+                    // });                 
                     
-                    $("#unwatch-btn").bind('click', function() {
-                        testEditor.unwatch();
-                    });              
+                    // $("#unwatch-btn").bind('click', function() {
+                    //     testEditor.unwatch();
+                    // });              
                     
-                    $("#preview-btn").bind('click', function() {
-                        testEditor.previewing();
-                    });
+                    // $("#preview-btn").bind('click', function() {
+                    //     testEditor.previewing();
+                    // });
                     
-                    $("#fullscreen-btn").bind('click', function() {
-                        testEditor.fullscreen();
-                    });
+                    // $("#fullscreen-btn").bind('click', function() {
+                    //     testEditor.fullscreen();
+                    // });
                     
-                    $("#show-toolbar-btn").bind('click', function() {
-                        testEditor.showToolbar();
-                    });
+                    // $("#show-toolbar-btn").bind('click', function() {
+                    //     testEditor.showToolbar();
+                    // });
                     
-                    $("#close-toolbar-btn").bind('click', function() {
-                        testEditor.hideToolbar();
-                    });
+                    // $("#close-toolbar-btn").bind('click', function() {
+                    //     testEditor.hideToolbar();
+                    // });
                     
-                    $("#toc-menu-btn").click(function(){
-                        testEditor.config({
-                            tocDropdown   : true,
-                            tocTitle      : "目录 Table of Contents",
-                        });
-                    });
+                    // $("#toc-menu-btn").click(function(){
+                    //     testEditor.config({
+                    //         tocDropdown   : true,
+                    //         tocTitle      : "目录 Table of Contents",
+                    //     });
+                    // });
                     
-                    $("#toc-default-btn").click(function() {
-                        testEditor.config("tocDropdown", false);
-                    });
+                    // $("#toc-default-btn").click(function() {
+                    //     testEditor.config("tocDropdown", false);
+                    // });
                 });
             </script>
             
             <% end %>
             
             <%= link_to '返回帖子列表',  articles_path ,class:'back'%>
-        </div>
-    </div>
     
 </body>
 </html>
