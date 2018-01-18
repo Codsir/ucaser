@@ -4,8 +4,8 @@
     <title>新建帖子</title>
     <meta charset="UTF-8"/>
     <%= stylesheet_link_tag "style.css" %>
-    <%= stylesheet_link_tag "editormd.css" %>
     <%= stylesheet_link_tag "bootstrap.css" %>
+    <%= stylesheet_link_tag "editormd.css" %>
     <%= javascript_include_tag "jquery.min.js" %>
     <%= javascript_include_tag "bootstrap.js" %>
     <%= javascript_include_tag "application" %>
@@ -89,10 +89,10 @@
                         path : '/lib/',
                         theme : "default",
                         previewTheme : "default",
-                        editorTheme : "base 16-light",
+                        editorTheme : "base16-light",
                         //markdown : md,
                         codeFold : true,
-                        //syncScrolling : false,
+                        syncScrolling : true,
                         saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
                         searchReplace : true,
                         //watch : false,                // 关闭实时预览
