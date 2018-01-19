@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= @article.title %></title>
+    <title>新建帖子</title>
     <meta charset="UTF-8"/>
     <%= stylesheet_link_tag "style.css" %>
     <%= stylesheet_link_tag "bootstrap.css" %>
     <%= stylesheet_link_tag "editormd.preview.css" %>
+    <%= javascript_include_tag "jquery.min.js" %>
+    <%= javascript_include_tag "bootstrap.js" %>
+    <%= javascript_include_tag "application" %>
     
     <style>            
             .editormd-html-preview {
@@ -45,7 +48,7 @@
     
             <div id="layout">
                 <header>
-                    <h1><%= @article.title %></h1>
+                    <h1>新建帖子</h1>
                     <%= form_for @article do |f| %>
          
                     <% if @article.errors.any? %>
@@ -61,8 +64,13 @@
                     </div>
                     <% end %>
                     
-                    <label style="font-size:20px;margin-bottom:10px;margin-top:10px"><%= @article.label %></label><br>
+                    <%= f.label :帖子标题,style:"font-size:20px;margin-bottom:10px;margin-top:10px"%>
+                    <%= f.text_field :title , type:"text",class:"form-control",placeholder:"帖子标题" %>
+                
+                    <%= f.label :帖子标签,style:"font-size:20px;margin-bottom:10px;margin-top:10px" %>
+                    <%= f.text_field :label , type:"text",class:"form-control",placeholder:"帖子标签" %>
                
+                    <%= f.label :帖子内容,style:"font-size:20px;margin-bottom:10px;margin-top:10px" %>
                     
                 </header>
                 
@@ -74,15 +82,17 @@
             <br><br><br><br>
             
             <%= javascript_include_tag "jquery.min.js" %>
-            <%= javascript_include_tag "marked.min.js" %>            
-            <%= javascript_include_tag "prettify.min.js" %>
-            <%= javascript_include_tag "raphael.min.js" %>
-            <%= javascript_include_tag "underscore.min.js" %>
-            <%= javascript_include_tag "sequence-diagram.min.js" %>
-            <%= javascript_include_tag "flowchart.min.js" %>
-            <%= javascript_include_tag "jquery.flowchart.min.js" %>
-            <%= javascript_include_tag "bootstrap.js" %>
-            <%= javascript_include_tag "application" %>
+            <%= javascript_include_tag "marked.min.js" %>
+        <script path="/lib/prettify.min.js"></script>
+        
+        <script path="/lib/raphael.min.js"></script>
+        <script path="/lib/underscore.min.js"></script>
+        <script path="/lib/sequence-diagram.min.js"></script>
+        <script path="/lib/flowchart.min.js"></script>
+        <script path="/lib/jquery.flowchart.min.js"></script>
+        
+        
+            <%= javascript_include_tag "jquery.min.js" %>
             <%= javascript_include_tag "editormd.js" %>
             <script type="text/javascript">
                 var testEditor;
