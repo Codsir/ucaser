@@ -3,16 +3,17 @@
 <head>
     <title><%= @article.title %></title>
     <meta charset="UTF-8"/>
+    <!--<%= link_to image_tag("air-balloon-1.png", style:"width: 64px; height: 64px;"),'#' %>-->
     <%= stylesheet_link_tag "style.css" %>
     <%= stylesheet_link_tag "bootstrap.css" %>
     <%= stylesheet_link_tag "editormd.preview.css" %>
     
     <style>            
-            .editormd-html-preview {
-                width: 90%;
-                margin: 0 auto;
-            }
-        </style>
+        .editormd-html-preview {
+            width: 90%;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body style="padding-top:40px">
     
@@ -46,20 +47,6 @@
             <div id="layout">
                 <header>
                     <h1><%= @article.title %></h1>
-                    <%= form_for @article do |f| %>
-         
-                    <% if @article.errors.any? %>
-                    <div id="error_explanation">
-                      <h2>
-                        <%= @article.errors.count%>错误导致帖子无法保存:
-                      </h2>
-                      <ul>
-                        <% @article.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                    <% end %>
                     
                     <label style="font-size:20px;margin-bottom:10px;margin-top:10px"><%= @article.label %></label><br>
                
@@ -72,13 +59,82 @@
                   <%= link_to image_tag("air-balloon-1.png", alt: "User Name", style:"width: 64px; height: 64px;"),'#' %>
                 </div>
                 <div class="media-body" style="margin-left:0px;padding-right:80px;width:100%;">
-                  <div class="markdown-body editormd-html-preview" id="test-editormd" style="width:100%;">                
+                  <div class="markdown-body editormd-html-preview" id="preview-editormd" style="width:100%;">                
                     <textarea id="append-test" style="display:none;"><%= @article.text %></textarea>
                   </div>
+                  
                   <div align="right">
-                    <button class="btn btn-default" type="submit">评论</button>
-                    <button class="btn btn-default" type="submit">回复</button>
+                    <!-- 按钮触发模态框 -->
+                    <button class="btn btn-default" data-toggle="modal" data-target="#commentModal">评论</button>
+                    <button class="btn btn-default" data-toggle="modal" data-target="#reModal">回复</button>
                   </div>
+                  
+                  
+<!-- 评论模态框（Modal） -->
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			  <!--关闭“X”-->
+				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
+				<!--	&times;-->
+				<!--</button>-->
+				<h4 class="modal-title" id="myModalLabel">
+					添加评论
+				</h4>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form-control" placeholder="写下你的评论吧！">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button
+				
+				<!--评论提交按钮-->
+				<button type="button" class="btn btn-primary">
+					提交
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+                  
+                  
+<!-- 回复模态框（Modal） -->
+<div class="modal fade" id="reModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width:90%;">
+		<div class="modal-content">
+			<div class="modal-header">
+			  <!--关闭“X”-->
+				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
+				<!--	&times;-->
+				<!--</button>-->
+				<h4 class="modal-title" id="myModalLabel">
+					添加评论
+				</h4>
+			</div>
+			<div class="modal-body">
+			  <form action="http://editormd.ipandao.com/php/post.php" method="post">
+            <div class="editormd" id="re-editormd">                
+                <textarea style="display:none;"></textarea>
+            </div>
+            <!--<br/><input type="submit" name="commit" value="发布" class="btn" style="margin-left: 5%;" />-->
+        </form>
+			</div>
+			<div class="modal-footer">re-editormd
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button
+				
+				<!--评论提交按钮-->
+				<button type="button" class="btn btn-primary">
+					提交
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+ 
+                  
                 </div>
               </div>
             </div>
@@ -95,23 +151,70 @@
             <%= javascript_include_tag "application" %>
             <%= javascript_include_tag "editormd.js" %>
             <script type="text/javascript">
-                var testEditor;
+                var previewEditor,reEditor;
                     
                 $(function() {
-                testEditor = editormd.markdownToHTML("test-editormd", {
-                    htmlDecode      : "style,script,iframe",  // you can filter tags decode
-                    emoji           : true,
-                    taskList        : true,
-                    tex             : true,  // 默认不解析
-                    flowChart       : true,  // 默认不解析
-                    sequenceDiagram : true,  // 默认不解析
+                  previewEditor = editormd.markdownToHTML("preview-editormd", {
+                      htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                      emoji           : true,
+                      taskList        : true,
+                      tocm            : true,    // Using [TOCM]
+                      tex             : true,  // 默认不解析
+                      flowChart       : true,  // 默认不解析
+                      sequenceDiagram : true,  // 默认不解析
+                  });
                 });
-            });
-        </script>
+                
+                $(function() {
+                    reEditor = editormd("re-editormd", {
+                        width: "90%",
+                        height: 740,
+                        path : '/lib/',
+                        theme : "default",
+                        previewTheme : "default",
+                        editorTheme : "base16-light",
+                        //markdown : md,
+                        codeFold : true,
+                        syncScrolling : true,
+                        saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
+                        searchReplace : true,
+                        //watch : false,                // 关闭实时预览
+                        htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启    
+                        //toolbar  : false,             //关闭工具栏
+                        //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
+                        emoji : true,
+                        taskList : true,
+                        tocm            : true,         // Using [TOCM]
+                        tex : true,                   // 开启科学公式TeX语言支持，默认关闭
+                        flowChart : true,             // 开启流程图支持，默认关闭
+                        sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
+                        //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+                        //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+                        //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+                        //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+                        //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+                        imageUpload : true,
+                        imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                        imageUploadURL : "./php/upload.php",
+                        onload : function() {
+                            console.log('onload', this);
+                            //this.fullscreen();
+                            //this.unwatch();
+                            //this.watch().fullscreen();
+        
+                            //this.setMarkdown("#PHP");
+                            //this.width("100%");
+                            //this.height(480);
+                            //this.resize("100%", 640);
+                        }
+                    });
+                });
+            </script>
             
-            <% end %>
+            
             
             <%= link_to '返回帖子列表',  articles_path ,class:'back'%>
+            <!--<a class="back" href="/articles">返回帖子列表</a>-->
     
 </body>
 </html>

@@ -1,117 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>新建帖子</title>
-    <meta charset="UTF-8"/>
-    <%= stylesheet_link_tag "style.css" %>
-    <%= stylesheet_link_tag "bootstrap.css" %>
-    <%= stylesheet_link_tag "editormd.preview.css" %>
-    <%= javascript_include_tag "jquery.min.js" %>
-    <%= javascript_include_tag "bootstrap.js" %>
-    <%= javascript_include_tag "application" %>
-    
-    <style>            
-            .editormd-html-preview {
-                width: 90%;
-                margin: 0 auto;
-            }
-        </style>
-</head>
-<body style="padding-top:40px">
-    
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">UCASER论坛</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/">主页</a></li>
-            <li><a href="/articles">看帖</a></li>
-            <li class="active"><a href="/articles/new">发帖</a></li>
-            
-            <!--这里是搜索页面的链接-->
-            <li><a href="">搜索</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login/login.html">登陆</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-            <div id="layout">
-                <header>
-                    <h1>新建帖子</h1>
-                    <%= form_for @article do |f| %>
-         
-                    <% if @article.errors.any? %>
-                    <div id="error_explanation">
-                      <h2>
-                        <%= @article.errors.count%>错误导致帖子无法保存:
-                      </h2>
-                      <ul>
-                        <% @article.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                    <% end %>
-                    
-                    <%= f.label :帖子标题,style:"font-size:20px;margin-bottom:10px;margin-top:10px"%>
-                    <%= f.text_field :title , type:"text",class:"form-control",placeholder:"帖子标题" %>
-                
-                    <%= f.label :帖子标签,style:"font-size:20px;margin-bottom:10px;margin-top:10px" %>
-                    <%= f.text_field :label , type:"text",class:"form-control",placeholder:"帖子标签" %>
-               
-                    <%= f.label :帖子内容,style:"font-size:20px;margin-bottom:10px;margin-top:10px" %>
-                    
-                </header>
-                
-            </div>
-            
-                <div class="markdown-body editormd-html-preview" id="test-editormd">                
-                    <textarea id="append-test" style="display:none;"><%= @article.text %></textarea>
-                </div>
-            <br><br><br><br>
-            
-            <%= javascript_include_tag "jquery.min.js" %>
-            <%= javascript_include_tag "marked.min.js" %>
-        <script path="/lib/prettify.min.js"></script>
-        
-        <script path="/lib/raphael.min.js"></script>
-        <script path="/lib/underscore.min.js"></script>
-        <script path="/lib/sequence-diagram.min.js"></script>
-        <script path="/lib/flowchart.min.js"></script>
-        <script path="/lib/jquery.flowchart.min.js"></script>
-        
-        
-            <%= javascript_include_tag "jquery.min.js" %>
-            <%= javascript_include_tag "editormd.js" %>
-            <script type="text/javascript">
-                var testEditor;
-                    
-                $(function() {
-                testEditor = editormd.markdownToHTML("test-editormd", {
-                    htmlDecode      : "style,script,iframe",  // you can filter tags decode
-                    emoji           : true,
-                    taskList        : true,
-                    tex             : true,  // 默认不解析
-                    flowChart       : true,  // 默认不解析
-                    sequenceDiagram : true,  // 默认不解析
-                });
-            });
-        </script>
-            
-            <% end %>
-            
-            <%= link_to '返回帖子列表',  articles_path ,class:'back'%>
-    
-</body>
-</html>
+<form class="new_comment" id="new_comment" action="/articles/1/comments" method="post" accept-charset="UTF-8">
+
+<input name="utf8" type="hidden" value="✓">
+<input name="authenticity_token" type="hidden" value="H2A2u5YgFwlH91DWVLYR9O6aIAfq2Ct8PKTBHQ4u0SyYjAdEjGSR0S+LbnOerULIJEQF7ZxUjO5T0mxqFvLefA==">
+
+      <p>
+
+        <label for="comment_commenter">Commenter</label><br>
+
+        <input name="comment[commenter]" id="comment_commenter" type="text">
+
+      </p>
+
+      <p>
+
+        <label for="comment_body">Body</label><br>
+
+        <textarea name="comment[body]" id="comment_body"></textarea>
+
+      </p>
+
+      <p>
+
+        <input name="commit" type="submit" value="Create Comment">
+
+      </p>
+
+</form>
