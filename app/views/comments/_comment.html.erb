@@ -1,15 +1,6 @@
-<p>
-  <strong>回复者:</strong>
-  <%= comment.commenter %>
-</p>
- 
-<p>
-  <strong>回复:</strong>
-  <%= comment.body %>
-</p>
+  <a ref="#"><%= comment.commenter %>:</a>
+  <p class="bg-success"><%= comment.body %></p>
 
-<p>
   <%= link_to '删除评论', [comment.article, comment],
                method: :delete,
-               data: { confirm: '确定删除评论?' } %>
-</p>
+               data: { confirm: '确定删除评论?' } %><br>

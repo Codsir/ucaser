@@ -6,6 +6,7 @@
     <!--<%= link_to image_tag("air-balloon-1.png", style:"width: 64px; height: 64px;"),'#' %>-->
     <%= stylesheet_link_tag "style.css" %>
     <%= stylesheet_link_tag "bootstrap.css" %>
+    <%= stylesheet_link_tag "editormd.css" %>
     <%= stylesheet_link_tag "editormd.preview.css" %>
     
     <style>            
@@ -63,11 +64,17 @@
                     <textarea id="append-test" style="display:none;"><%= @article.text %></textarea>
                   </div>
                   
+                  <%= render @article.comments %>
+                  
+                  
                   <div align="right">
                     <!-- 按钮触发模态框 -->
                     <button class="btn btn-default" data-toggle="modal" data-target="#commentModal">评论</button>
                     <button class="btn btn-default" data-toggle="modal" data-target="#reModal">回复</button>
                   </div>
+                  
+                  
+    
                   
                   
 <!-- 评论模态框（Modal） -->
@@ -84,16 +91,24 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<input type="text" class="form-control" placeholder="写下你的评论吧！">
+			  
+		<%= form_for([@article, @article.comments.build]) do |f| %>
+      <!--<p>-->
+      <!--  <%= f.label :commenter %><br>-->
+      <!--  <%= f.text_field :commenter %>-->
+      <!--</p>-->
+        <%= f.text_area :body,type:"text", class:"form-control", placeholder:"写下你的评论吧！" %>
+        
+			  
+				<!--<input type="text" class="form-control" placeholder="写下你的评论吧！">-->
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				
 				<!--评论提交按钮-->
-				<button type="button" class="btn btn-primary">
-					提交
-				</button>
+				<input class="btn btn-primary" name="commit" type="submit" />
+				
+    <% end %>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
@@ -110,25 +125,24 @@
 				<!--	&times;-->
 				<!--</button>-->
 				<h4 class="modal-title" id="myModalLabel">
-					添加评论
+					回复
 				</h4>
 			</div>
-			<div class="modal-body">
+			<!--<div class="modal-body">-->
+			  
 			  <form action="http://editormd.ipandao.com/php/post.php" method="post">
             <div class="editormd" id="re-editormd">                
                 <textarea style="display:none;"></textarea>
             </div>
             <!--<br/><input type="submit" name="commit" value="发布" class="btn" style="margin-left: 5%;" />-->
         </form>
-			</div>
-			<div class="modal-footer">re-editormd
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button
+			  
+			<!--</div>-->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				
 				<!--评论提交按钮-->
-				<button type="button" class="btn btn-primary">
-					提交
-				</button>
+				<button type="button" class="btn btn-primary">提交</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
@@ -138,6 +152,8 @@
                 </div>
               </div>
             </div>
+            
+            
             
             <%= javascript_include_tag "jquery.min.js" %>
             <%= javascript_include_tag "marked.min.js" %>            
@@ -166,9 +182,9 @@
                 });
                 
                 $(function() {
-                    reEditor = editormd("re-editormd", {
-                        width: "90%",
-                        height: 740,
+                  reEditor = editormd("re-editormd", {
+                        width: "100%",
+                        height: 480,
                         path : '/lib/',
                         theme : "default",
                         previewTheme : "default",
@@ -196,17 +212,17 @@
                         imageUpload : true,
                         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                         imageUploadURL : "./php/upload.php",
-                        onload : function() {
-                            console.log('onload', this);
-                            //this.fullscreen();
-                            //this.unwatch();
-                            //this.watch().fullscreen();
+                        // onload : function() {
+                        //     console.log('onload', this);
+                        // //     //this.fullscreen();
+                        // //     //this.unwatch();
+                        // //     //this.watch().fullscreen();
         
-                            //this.setMarkdown("#PHP");
-                            //this.width("100%");
-                            //this.height(480);
-                            //this.resize("100%", 640);
-                        }
+                        // //     //this.setMarkdown("#PHP");
+                        // //     //this.width("100%");
+                        // //     //this.height(480);
+                        //     this.resize("100%", 480);
+                        // }
                     });
                 });
             </script>

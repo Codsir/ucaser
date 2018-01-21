@@ -1222,6 +1222,7 @@
         
         getToolbarHandles : function(name) {  
             var toolbarHandlers = this.toolbarHandlers = editormd.toolbarHandlers;
+            var toolbarIconHandlers;
             
             return (name && typeof toolbarIconHandlers[name] !== "undefined") ? toolbarHandlers[name] : toolbarHandlers;
         },

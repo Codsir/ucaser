@@ -1,13 +1,61 @@
-<form class="new_comment" id="new_comment" action="/articles/1/comments" method="post" accept-charset="UTF-8">
 
-<input name="utf8" type="hidden" value="✓">
-<input name="authenticity_token" type="hidden" value="H2A2u5YgFwlH91DWVLYR9O6aIAfq2Ct8PKTBHQ4u0SyYjAdEjGSR0S+LbnOerULIJEQF7ZxUjO5T0mxqFvLefA==">
+    <p>
+
+      <strong>标题:</strong>
+
+      test
+
+    </p>
+
+     
+
+    <p>
+
+      <strong>标签:</strong>
+
+      test22
+
+    </p>
+
+    
+
+    <p>
+
+      <strong>内容:</strong>
+
+      特斯特1111
+
+    </p>
+
+    
+
+    <h2>回复贴：</h2>
+
+    <p>
+  <strong>回复者:</strong>
+  111
+</p>
+ 
+<p>
+  <strong>回复:</strong>
+  111
+</p>
+
+<p>
+  <a data-confirm="确定删除评论?" rel="nofollow" data-method="delete" href="/articles/1/comments/1">删除评论</a>
+</p>
+
+     
+
+    <h2>回复帖子:</h2>
+
+    <form class="new_comment" id="new_comment" action="/articles/1/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Q1fxSZiOTjWHJU2biY3oY424qM1m7d0RX0eeMukg9SyUfnOswXbN4p7mDbizY77p5zKX4mkTLE4IA2nGsSL0mA==" />
 
       <p>
 
         <label for="comment_commenter">Commenter</label><br>
 
-        <input name="comment[commenter]" id="comment_commenter" type="text">
+        <input type="text" name="comment[commenter]" id="comment_commenter" />
 
       </p>
 
@@ -15,14 +63,18 @@
 
         <label for="comment_body">Body</label><br>
 
-        <textarea name="comment[body]" id="comment_body"></textarea>
+        <textarea name="comment[body]" id="comment_body">
+</textarea>
 
       </p>
 
       <p>
 
-        <input name="commit" type="submit" value="Create Comment">
+        <input type="submit" name="commit" value="Create Comment" />
 
       </p>
 
 </form>
+<a href="/articles/1/edit">编辑帖子</a> |
+
+<a href="/articles">回到主页</a>

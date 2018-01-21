@@ -655,10 +655,23 @@
   background: #eee;
 }
 
-.editormd .CodeMirror, .editormd-preview {
+.editormd .CodeMirror {
   display: inline-block;
-  width: 50%;
-  height: 100%;
+  width: 50% !important;
+  height: 100% !important;
+  /*margin-top: 79px !important;*/
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.editormd .editormd-preview {
+  display: inline-block;
+  width: 50% !important;
+  height: 100% !important;
+  /*margin-top: 79px !important;*/
   vertical-align: top;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -668,7 +681,7 @@
 
 .editormd-preview {
   position: absolute;
-  top: 35px;
+  /*top: 35px;*/
   right: 0;
   right: -1px\0;
   overflow: auto;
