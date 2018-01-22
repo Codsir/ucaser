@@ -54,20 +54,25 @@
                 </header>
             </div>
             
-            <div class="bs-example" data-example-id="media-alignment" style="padding-left:20px;">
+            <div style="margin-bottom:70px;">
+              <div class="bs-example" data-example-id="media-alignment" style="padding-left:20px;">
               <div class="media">
                 <div class="media-left">
                   <%= link_to image_tag("air-balloon-1.png", alt: "User Name", style:"width: 64px; height: 64px;"),'#' %>
                 </div>
                 <div class="media-body" style="margin-left:0px;padding-right:80px;width:100%;">
-                  <div class="markdown-body editormd-html-preview" id="preview-editormd" style="width:100%;">                
+                  <div style="background-color: #eeeeee8f;padding-bottom: 5px;">
+                    
+                  <div class="markdown-body editormd-html-preview" id="preview-editormd" style="width:100%;padding-bottom: 5px;background-color: #eeeeee8f;">                
                     <textarea id="append-test" style="display:none;"><%= @article.text %></textarea>
                   </div>
-                  
+                  <hr style="height:1px;border:none;border-top:1px solid #aaa;margin-bottom:5px;margin-top:0px;margin-left:20px;margin-right:20px;">
+                  <div style="margin-left:50px;">
                   <%= render @article.comments %>
+                  </div>
+                  </div>
                   
-                  
-                  <div align="right">
+                  <div align="right" style="margin-right:20px;">
                     <!-- 按钮触发模态框 -->
                     <button class="btn btn-default" data-toggle="modal" data-target="#commentModal">评论</button>
                     <button class="btn btn-default" data-toggle="modal" data-target="#reModal">回复</button>
@@ -77,81 +82,85 @@
     
                   
                   
-<!-- 评论模态框（Modal） -->
-<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-			  <!--关闭“X”-->
-				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
-				<!--	&times;-->
-				<!--</button>-->
-				<h4 class="modal-title" id="myModalLabel">
-					添加评论
-				</h4>
-			</div>
-			<div class="modal-body">
-			  
-		<%= form_for([@article, @article.comments.build]) do |f| %>
-      <!--<p>-->
-      <!--  <%= f.label :commenter %><br>-->
-      <!--  <%= f.text_field :commenter %>-->
-      <!--</p>-->
-        <%= f.text_area :body,type:"text", class:"form-control", placeholder:"写下你的评论吧！" %>
-        
-			  
-				<!--<input type="text" class="form-control" placeholder="写下你的评论吧！">-->
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				
-				<!--评论提交按钮-->
-				<input class="btn btn-primary" name="commit" type="submit" />
-				
-    <% end %>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
-</div>
-                  
-                  
-<!-- 回复模态框（Modal） -->
-<div class="modal fade" id="reModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" style="width:90%;">
-		<div class="modal-content">
-			<div class="modal-header">
-			  <!--关闭“X”-->
-				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
-				<!--	&times;-->
-				<!--</button>-->
-				<h4 class="modal-title" id="myModalLabel">
-					回复
-				</h4>
-			</div>
-			<!--<div class="modal-body">-->
-			  
-			  <form action="http://editormd.ipandao.com/php/post.php" method="post">
-            <div class="editormd" id="re-editormd">                
-                <textarea style="display:none;"></textarea>
-            </div>
-            <!--<br/><input type="submit" name="commit" value="发布" class="btn" style="margin-left: 5%;" />-->
-        </form>
-			  
-			<!--</div>-->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				
-				<!--评论提交按钮-->
-				<button type="button" class="btn btn-primary">提交</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
-</div>
- 
+                  <!-- 评论模态框（Modal） -->
+                  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  	<div class="modal-dialog">
+                  		<div class="modal-content">
+                  			<div class="modal-header">
+                  			  <!--关闭“X”-->
+                  				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
+                  				<!--	&times;-->
+                  				<!--</button>-->
+                  				<h4 class="modal-title" id="myModalLabel">
+                  					添加评论
+                  				</h4>
+                  			</div>
+                  			<div class="modal-body">
+                  			  
+                  		<%= form_for([@article, @article.comments.build]) do |f| %>
+                        <!--<p>-->
+                        <!--  <%= f.label :commenter %><br>-->
+                        <!--  <%= f.text_field :commenter %>-->
+                        <!--</p>-->
+                          <%= f.text_area :body,type:"text", class:"form-control", placeholder:"写下你的评论吧！" %>
+                          
+                  			  
+                  				<!--<input type="text" class="form-control" placeholder="写下你的评论吧！">-->
+                  			</div>
+                  			<div class="modal-footer">
+                  				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  				
+                  				<!--评论提交按钮-->
+                  				<input class="btn btn-primary" name="commit" type="submit" />
+                  				
+                      <% end %>
+                  			</div>
+                  		</div><!-- /.modal-content -->
+                  	</div><!-- /.modal -->
+                  </div>
+                                    
+                                    
+                  <!-- 回复模态框（Modal） -->
+                  <div class="modal fade" id="reModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  	<div class="modal-dialog" style="width:90%;">
+                  		<div class="modal-content">
+                  			<div class="modal-header">
+                  			  <!--关闭“X”-->
+                  				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
+                  				<!--	&times;-->
+                  				<!--</button>-->
+                  				<h4 class="modal-title" id="myModalLabel">
+                  					回复
+                  				</h4>
+                  			</div>
+                  			<!--<div class="modal-body">-->
+                  			  
+                  			  <form action="http://editormd.ipandao.com/php/post.php" method="post">
+                              <div class="editormd" id="re-editormd">                
+                                  <textarea style="display:none;"></textarea>
+                              </div>
+                              <!--<br/><input type="submit" name="commit" value="发布" class="btn" style="margin-left: 5%;" />-->
+                          </form>
+                  			  
+                  			<!--</div>-->
+                  			<div class="modal-footer">
+                  				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  				
+                  				<!--评论提交按钮-->
+                  				<button type="button" class="btn btn-primary">提交</button>
+                  			</div>
+                  		</div><!-- /.modal-content -->
+                  	</div><!-- /.modal -->
+                  </div>
+                 
                   
                 </div>
               </div>
             </div>
+              
+            </div>
+            
+            
             
             
             

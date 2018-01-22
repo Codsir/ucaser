@@ -1,6 +1,8 @@
-  <a ref="#"><%= comment.commenter %>:</a>
-  <p class="bg-success"><%= comment.body %></p>
-
+  <a ref="#"><%= comment.commenter %>:</a>  
+  
   <%= link_to '删除评论', [comment.article, comment],
                method: :delete,
-               data: { confirm: '确定删除评论?' } %><br>
+               data: { confirm: '确定删除评论?' } , style:"float:right;margin-right:20px;" %><br>
+  
+  <p style="padding-top:5px;padding-bottom:5px;margin-bottom:0px;margin-right:20px;"><%= comment.body %></p>
+  <hr style="height:1px;border:none;border-top: 1px dashed #aaa;margin-top: 2px;margin-bottom: 2px;margin-right:20px;">
