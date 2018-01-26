@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/welcome'
   get 'login/login'=>'login#login'
+  get 'administrator/administrator'=>'administrator#administrator'
   
   #resources :articles
   
