@@ -14,9 +14,21 @@
             width: 90%;
             margin: 0 auto;
         }
-        .editormd-preview,.CodeMirror{
-            margin-top: 79px !important;
+        .editormd-preview{
+            /*margin-top: 79px !important;*/
+            position: absolute;
+            /*top: 79px;*/
+            bottom: 0px;
         }  
+        .CodeMirror{
+            /*margin-top: 79px !important;*/
+            position: absolute;
+            /*top: 79px;*/
+            bottom: 0px;
+        }  
+        .editormd-toolbar{
+            height:79px;
+        }
     </style>
 </head>
 <body style="padding-top:40px">
@@ -137,16 +149,16 @@
                   					回复
                   				</h4>
                   			</div>
-                  			<!--<div class="modal-body">-->
+                  			<div class="modal-body" style="padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 5px;">
                   			  
                   			  <form action="http://editormd.ipandao.com/php/post.php" method="post">
-                              <div class="editormd" id="re-editormd">                
+                              <div class="editormd" id="re-editormd" style="margin-bottom: 0px;">                
                                   <textarea style="display:none;"></textarea>
                               </div>
                               <!--<br/><input type="submit" name="commit" value="发布" class="btn" style="margin-left: 5%;" />-->
                           </form>
                   			  
-                  			<!--</div>-->
+                  			</div>
                   			<div class="modal-footer">
                   				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                   				
@@ -209,7 +221,7 @@
                         searchReplace : true,
                         //watch : false,                // 关闭实时预览
                         htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启    
-                        //toolbar  : false,             //关闭工具栏
+                        toolbar  : true,             //关闭工具栏
                         //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
                         emoji : true,
                         taskList : true,
@@ -225,8 +237,8 @@
                         imageUpload : true,
                         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                         imageUploadURL : "./php/upload.php",
-                        // onload : function() {
-                        //     console.log('onload', this);
+                        onload : function() {
+                            console.log('onload', this);
                         // //     //this.fullscreen();
                         // //     //this.unwatch();
                         // //     //this.watch().fullscreen();
@@ -235,7 +247,7 @@
                         // //     //this.width("100%");
                         // //     //this.height(480);
                         //     this.resize("100%", 480);
-                        // }
+                        }
                     });
                 });
             </script>
