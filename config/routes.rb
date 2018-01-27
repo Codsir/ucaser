@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/welcome'
   get 'login/login'=>'login#login'
   get 'administrator/administrator'=>'administrator#administrator'
-  
+  get 'search/search'=>'search#search'
   #resources :articles
   
   resources :articles do

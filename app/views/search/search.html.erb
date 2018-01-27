@@ -1,55 +1,102 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>站内搜索</title>
 
 
+	<!--搜索框排版-->
+ <style>
+        body { font-family:Arial, Helvetica, Sans-Serif; font-size:12px; margin:0px 20px;}
+        /* menu */
+        #menu{ margin:0px; padding:0px; list-style:none; color:#fff; line-height:45px; display:inline-block; float:left; z-index:1000; }
+        #menu a { color:#fff; text-decoration:none; }
+        #menu > li {background:#172322 none repeat scroll 0 0; cursor:pointer; float:left; position:relative;padding:0px 10px;}
+        #menu > li a:hover {color:#B0D730;}
+        #menu .logo {background:; padding:0px; }
+        /* sub-menus*/
+        #menu ul { padding:0px; margin:0px; display:block; display:inline;}
+        #menu li ul { position:absolute; left:-10px; top:0px; margin-top:45px; width:150px; line-height:16px; background-color:#172322; color:#0395CC; /* for IE */ display:none; }
+        #menu li:hover ul { display:block;}
+        #menu li ul li{ display:block; margin:5px 20px; padding: 5px 0px;  border-top: dotted 1px #606060; list-style-type:none; }
+        #menu li ul li:first-child { border-top: none; }
+        #menu li ul li a { display:block; color:#0395CC; }
+        #menu li ul li a:hover { color:#7FCDFE; }
+        /* main submenu */
+        #menu #main { left:0px; top:-20px; padding-top:20px; background-color:#7cb7e3; color:#fff; z-index:999;}
+        /* search */
+        .searchContainer div { background-color:#fff; display:inline; padding:5px;}
+        .searchContainer input[type="text"] {border:none;}
+        .searchContainer img { vertical-align:middle;}
+        /* corners*/
+        #menu .corner_inset_left { position:absolute; top:0px; left:-12px;}
+        #menu .corner_inset_right { position:absolute; top:0px; left:150px;}
+        #menu .last { background:transparent none repeat scroll 0% 0%; margin:0px; padding:0px; border:none; position:relative; border:none; height:0px;}
+        #menu .corner_left { position:absolute; left:0px; top:0px;}
+        #menu .corner_right { position:absolute; left:132px; top:0px;}
+        #menu .middle { position:absolute; left:18px; height: 20px; width: 115px; top:0px;}
+    </style>
+</head>
 
-<html>
-    <head>
-        <title>登陆</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
-        <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
-	    <%= stylesheet_link_tag "bootstrap.css" %>
-        <%= stylesheet_link_tag "style.css" %>
-	    <%= javascript_include_tag "jquery.min.js" %>
-	    <%= javascript_include_tag "bootstrap.js" %>
-		
-    </head>
-    <body style="padding-top:40px">
-    	
-	    <nav class="navbar navbar-default navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="#">UCASER论坛</a>
-	        </div>
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li><a href="/">主页</a></li>
-	            <li><a href="/articles">看帖</a></li>
-	            <li><a href="/articles/new">发帖</a></li>
-	            
-	            <!--这里是搜索页面的链接-->
-	            <li><a href="">搜索</a></li>
-	          </ul>
-	          <ul class="nav navbar-nav navbar-right">
-	            <li class="active"><a href="/login/login.html">登陆</a></li>
-            <li><a href="/administrator/administrator.html">管理员登陆</a></li>
-         
-	          </ul>
-	        </div>
-	      </div>
-	    </nav>
-	    
-	    
-<form action="https://ucaser-wangpeng246300.c9users.io/">
-<input type=text name=word>
-<input type="submit" value="搜索">
-<input name=tn type=hidden value="bds">
-<input name=cl type=hidden value="3">
-<input name=ct type=hidden value="2097152">
-<input name=si type=hidden value="https://ucaser-wangpeng246300.c9users.io/">
-</form> 
+	<!--搜索框功能-->
+<body>
+<div align="center">
+	<table border="1" width="400" style="border-width: 0px" height="400"><!--宽度和高度位置-->
+
+		<!-- MSTableType="layout" -->
+		<tr>
+			<td style="border-style: none; border-width: medium" align="center" height="210" width="559">&nbsp;
+   <div style="margin-left:50px;">
+        <ul id="menu">
+            <li><a href="/login/login.html">登陆</a>
+            </li>
+            <li><a href="#">帮助</a>
+                <ul id="帮助">
+                    <li>
+			<!--#位置填写链接地址-->
+                        <img class="corner_inset_left" alt="" src="corner_inset_left.png"/>
+                        <a href="#">General help</a>
+                        <img class="corner_inset_right" alt="" src="corner_inset_right.png"/>
+                    </li>
+                    <li><a href="#">向管理员请求帮助</a></li>
+                    <li><a href="#">向版主请求帮助</a></li>
+                    <li class="last">
+                        <img class="corner_left" alt="" src="corner_left.png"/>
+                        <img class="middle" alt="" src="dot.gif"/>
+                        <img class="corner_right" alt="" src="corner_right.png"/>
+                    </li>
+                </ul>
+            </li>
+            <li class="searchContainer">
+                <div>
+                <input type="text" id="searchField" />
+                <img src="magnifier.png" alt="Search" /></div>
+                <ul id="search">
+                    <li>
+                        <img class="corner_inset_left" alt="" src="corner_inset_left.png"/>
+                        <input id="cbxAll" type="checkbox" />搜索全部
+                        <img class="corner_inset_right" alt="" src="corner_inset_right.png"/>
+                    </li>
+                    <li><input id="Articles" type="checkbox" />搜索帖子</li>
+                    <li><input id="Tutorials" type="checkbox" />搜索文档</li>
+                    <li><input id="Reviews" type="checkbox" />下载中心</li>
+                    <!--li><input id="Resources" type="checkbox" />Resources</li-->
+                    <li class="last">
+                        <img class="corner_left" alt="" src="corner_left.png"/>
+                        <img class="middle" alt="" src="dot.gif"/>
+                        <img class="corner_right" alt="" src="corner_right.png"/>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</td>
+		</tr>
+	</table></div>
+<div style="float:none; clear:both;"></div>
+<br><br><br><br><br><br>
+<div style="text-align:center;clear:both">
+<p>版权所有©中国科学院大学论坛小组</p>
+<p>地址：北京市石景山区玉泉路19号（甲） 邮编: 100049</p>
+</div>
+</body>
+</html>

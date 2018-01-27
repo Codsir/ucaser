@@ -1,6 +1,6 @@
 @charset "utf-8";
 html,body{margin:0;padding:0;width:100%;}
-body{font-size:12px;font-family: "微软雅黑";color:#333;line-height:160%;background: url(../images/login-bg.jpg) center top repeat-x #FFF;height:100%;}
+body{font-size:12px;font-family: "微软雅黑";color:#333;line-height:160%;background: url(login-bg.jpg) center top repeat-x #FFF;height:100%;}
 p,ul,.name,.pwd,dd,h1,h2,h3,form,input,select,textarea{margin:0;padding:0;border:0;font-family:"微软雅黑";line-height:150%;}
 ul,li{list-style:none;}
 div,p{word-wrap: break-word;}
