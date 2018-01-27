@@ -46,10 +46,10 @@
                     <%= form_for @article do |f| %>
          
                     <% if @article.errors.any? %>
-                    <div id="error_explanation">
-                      <h2>
-                        <%= @article.errors.count%>错误导致帖子无法保存:
-                      </h2>
+                    <div id="error_explanation" style="color: red;">
+                      <h3 >
+                        <%= @article.errors.count%>个错误导致帖子无法保存:
+                      </h3>
                       <ul>
                         <% @article.errors.full_messages.each do |msg| %>
                           <li><%= msg %></li>
@@ -72,7 +72,7 @@
             
             <form action="http://editormd.ipandao.com/php/post.php" method="post">
                 <div class="editormd" id="test-editormd">                
-                    <textarea style="display:none;"  name="article[text]"></textarea>
+                    <textarea style="display:none;"  name="article[text]" id="article_text"><%= @article.text %></textarea>
                 </div>
                 <div align="right" style="width: 90%;margin-top: 20px;margin-left: 5%;margin-right: 5%;margin-bottom: 70px;">
                   <input class="btn btn-default" type="submit" name="commit" value="发布" />

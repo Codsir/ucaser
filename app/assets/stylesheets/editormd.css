@@ -655,23 +655,10 @@
   background: #eee;
 }
 
-.editormd .CodeMirror {
+.editormd .CodeMirror,.editormd-preview  {
   display: inline-block;
   width: 50% !important;
-  height: 100% !important;
-  /*margin-top: 79px !important;*/
-  vertical-align: top;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.editormd .editormd-preview {
-  display: inline-block;
-  width: 50% !important;
-  height: 100% !important;
-  /*margin-top: 79px !important;*/
+  height: 100%;
   vertical-align: top;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

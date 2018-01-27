@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
       if @article.save
         redirect_to @article
       else
+        @id = @article[:id]
         render 'new'
       end
     end
