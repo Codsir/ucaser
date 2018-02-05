@@ -1,23 +1,74 @@
-<!-- app/views/sessions/new.html.erb -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>登陆</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
+        <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
+	    <%= stylesheet_link_tag "bootstrap.css" %>
+        <%= stylesheet_link_tag "style.css" %>
+	    <%= javascript_include_tag "jquery.min.js" %>
+	    <%= javascript_include_tag "bootstrap.js" %>
+		
+    </head>
+    <body style="padding-top:70px">
+    	
+	    <nav class="navbar navbar-default navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">UCASER论坛</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav">
+	            <li><a href="/">主页</a></li>
+	            <li><a href="/articles">看帖</a></li>
+	            <li><a href="/articles/new">发帖</a></li>
+	            
+	            <!--这里是搜索页面的链接-->
+	            <li><a href="">搜索</a></li>
+	          </ul>
+	          <ul class="nav navbar-nav navbar-right">
+	            <li class="active"><a href="/sessions/new">登陆</a></li>
+              <li><a href="/administrator/administrator.html">管理员登陆</a></li>
+              <li><a href="/register/new">注册</a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+	    
+	    <div style="margin-left:15%;width:70%;">
+  			<h1 style="margin-bottom:5px;font-size:50px;">UCASER论坛登陆</h1>
+  			<h2 style="margin-bottom:10px;color:gray;">UCASER论坛请您登陆</h2>
+      </div>
  
-<h1>登录</h1>
- 
-<% if flash[:login_error] %>
-  <p><%= flash[:login_error] %></p>
-<% end %>
- 
-<%= form_for :session, url: :sessions_create do |f| %>
- 
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
- 
-  <p><%= f.button "登录" %></p>
- 
-<% end %>
+      <div style="width:60%;margin-left:20%;">
+         <% if flash[:login_error] %>
+          <p style="color:red;"><%= flash[:login_error] %></p>
+        <% end %>
+
+        <%= form_for :session, url: :sessions_create do |f| %>
+         
+          <p>
+            <label for="session_name">用户名：</label>
+            <%= f.text_field :name ,placeholder:"用户名", class:"form-control"%>
+          </p>
+         
+          <p>
+            <label for="session_password">密码：</label>
+            <%= f.password_field :password ,placeholder:"密码", class:"form-control"%>
+          </p>
+         
+          <div align="right">
+            <p><%= f.button "登陆" ,class:"btn btn-default"%></p>
+          </div>
+        <% end %>
+		  </div>
+		
+    </body>
+</html>

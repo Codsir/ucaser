@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
  def create
   user = User.find_by(names: user_params[:name])
   if user.password_digest == user_params[:password]
-   render  "welcome/welcomein"
+   redirect_to :welcome_welcome
   else
    flash.now[:login_error] = "invalid username or password"
    render "new"

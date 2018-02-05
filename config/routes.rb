@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   post 'sessions/create'
   get 'register/new'
   post 'register/create'
-  post 'login/create'
   get 'welcome/welcome'
   get 'welcome/welcomein'
-  get 'login/login'=>'login#login'
   get 'administrator/administrator'=>'administrator#administrator'
   get 'search/search'=>'search#search'
   #resources :articles
